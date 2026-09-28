@@ -42,7 +42,7 @@ export default function EditDialog({ task, loading, onSave, onClose }) {
 
   return (
     <Dialog open={!!task} onOpenChange={(open) => !open && onClose()}>
-      <DialogContent className="sm:max-w-md" id="edit-modal">
+      <DialogContent className="sm:max-w-md overflow-hidden max-w-[calc(100%-2rem)]" id="edit-modal">
         <DialogHeader>
           <DialogTitle>Edit Task</DialogTitle>
           <DialogDescription>
@@ -51,20 +51,20 @@ export default function EditDialog({ task, loading, onSave, onClose }) {
         </DialogHeader>
 
         <form
-          className="flex flex-col gap-4"
+          className="flex flex-col gap-4 min-w-0 max-w-full"
           onSubmit={handleSubmit}
           id="task-edit-form"
         >
           {task?.created_at && (
-            <div className="flex items-center gap-2 rounded-lg border border-border/60 bg-muted/30 px-3 py-2 text-xs text-muted-foreground">
+            <div className="flex items-center gap-2 rounded-lg border border-border/60 bg-muted/30 px-3 py-2 text-xs text-muted-foreground min-w-0 max-w-full overflow-hidden">
               <Clock className="size-3.5 shrink-0 text-muted-foreground/70" />
-              <span>Created {formatExactDate(task.created_at)}</span>
+              <span className="truncate">Created {formatExactDate(task.created_at)}</span>
               <span className="text-muted-foreground/40">•</span>
-              <span className="text-muted-foreground/70">{formatRelativeTime(task.created_at)}</span>
+              <span className="text-muted-foreground/70 shrink-0">{formatRelativeTime(task.created_at)}</span>
             </div>
           )}
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 min-w-0 max-w-full">
             <Label htmlFor="edit-title">Title</Label>
             <Input
               id="edit-title"
@@ -76,13 +76,14 @@ export default function EditDialog({ task, loading, onSave, onClose }) {
               }}
               aria-invalid={!!validationError}
               disabled={loading}
+              className="min-w-0 max-w-full"
             />
             {validationError && (
               <p className="text-xs text-destructive">{validationError}</p>
             )}
           </div>
 
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col gap-2 min-w-0 max-w-full">
             <div className="flex items-center justify-between">
               <Label htmlFor="edit-description">
                 Description{" "}
@@ -101,7 +102,7 @@ export default function EditDialog({ task, loading, onSave, onClose }) {
               maxLength={500}
               rows={3}
               disabled={loading}
-              className="resize-none text-xs"
+              className="resize-none text-xs min-w-0 max-w-full"
             />
           </div>
 

@@ -37,7 +37,7 @@ export default function TaskItem({ task, loading, onToggle, onEdit, onDelete }) 
       <div className="min-w-0 flex-1 py-0.5">
         <p
           className={cn(
-            "text-sm font-medium leading-snug break-words transition-colors",
+            "text-sm font-medium leading-snug break-all [overflow-wrap:anywhere] transition-colors",
             task.completed
               ? "text-muted-foreground line-through decoration-muted-foreground/60"
               : "text-foreground"
@@ -48,7 +48,7 @@ export default function TaskItem({ task, loading, onToggle, onEdit, onDelete }) 
         {task.description && (
           <p
             className={cn(
-              "mt-1 text-xs leading-relaxed text-muted-foreground break-words line-clamp-2",
+              "mt-1 text-xs leading-relaxed text-muted-foreground break-all [overflow-wrap:anywhere] line-clamp-2",
               task.completed && "line-through opacity-70"
             )}
             title={task.description}

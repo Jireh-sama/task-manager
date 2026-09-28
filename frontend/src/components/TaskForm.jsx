@@ -56,12 +56,12 @@ export default function TaskForm({ onSubmit, loading }) {
 
       <CardContent className="px-5 pb-5 pt-0">
         <form
-          className="flex flex-col gap-3.5"
+          className="flex flex-col gap-3.5 min-w-0 max-w-full"
           onSubmit={handleSubmit}
           onKeyDown={handleKeyDown}
           id="task-create-form"
         >
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 min-w-0 max-w-full">
             <Label htmlFor="task-title" className="text-xs font-medium text-foreground/90">
               Task Title
             </Label>
@@ -75,7 +75,7 @@ export default function TaskForm({ onSubmit, loading }) {
               }}
               aria-invalid={!!validationError}
               disabled={loading}
-              className="h-9 text-sm"
+              className="h-9 text-sm min-w-0 max-w-full"
               autoFocus
             />
             {validationError && (
@@ -83,7 +83,7 @@ export default function TaskForm({ onSubmit, loading }) {
             )}
           </div>
 
-          <div className="flex flex-col gap-1.5">
+          <div className="flex flex-col gap-1.5 min-w-0 max-w-full">
             <div className="flex items-center justify-between">
               <Label htmlFor="task-description" className="text-xs font-medium text-foreground/90">
                 Description{" "}
@@ -107,7 +107,7 @@ export default function TaskForm({ onSubmit, loading }) {
               maxLength={500}
               rows={2}
               disabled={loading}
-              className="min-h-16 text-xs resize-none"
+              className="min-h-16 text-xs resize-none min-w-0 max-w-full"
             />
           </div>
 
